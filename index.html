@@ -42,3 +42,13 @@ permalink: "/"
 <div class="sqs-html-content" data-sqsp-text-block-content>
   <h1 style="white-space:pre-wrap;">Also.</h1><p class="" style="white-space:pre-wrap;">When I'm not thinking about product management and technology, I like to nerd out to guitar gear, <a href="/music-reviews">review heavy music</a>, <a href="/photography">shoot photographs</a>, read fantasy/sci-fi, cry my eyes out supporting Arsenal (#coyg) and travel when there isn’t a pandemic. </p><p class="" style="white-space:pre-wrap;">Of late, I write for <a href="https://www.tempelores.com">Tempelores.com</a>, a quaint little website dedicated to heavy music based out of Netherlands and Finland. I also cross-post my reviews here. 👇</p>
 </div>
+
+<ul class="post-list">
+  {% assign latest_reviews = site["music-reviews"] | sort: "date" | reverse | slice: 0, 3 %}
+  {% for post in latest_reviews %}
+  <li>
+    <a class="post-list-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
+  </li>
+  {% endfor %}
+</ul>
