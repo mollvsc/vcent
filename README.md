@@ -7,11 +7,9 @@ Personal site, migrated from Squarespace to Jekyll for GitHub Pages.
 - `index.html` — homepage (migrated from the Squarespace export's "About"
   page, which was actually serving as the homepage/intro content)
 - `photography.html`, `newsletter.html` — standalone pages
-- `_writing/`, `_music-reviews/`, `_one-minute-vlogs/` — Jekyll collections
-  for the three post sections, each rendered by its own layout in
-  `_layouts/`
-- `writing/index.html`, `music-reviews/index.html`,
-  `one-minute-vlogs/index.html` — section listing pages
+- `_writing/`, `_music-reviews/` — Jekyll collections for the two post
+  sections, each rendered by its own layout in `_layouts/`
+- `writing/index.html`, `music-reviews/index.html` — section listing pages
 - `assets/images/` — all images self-hosted (downloaded from Squarespace's
   CDN during migration, since the CDN may stop working after the
   Squarespace subscription ends)

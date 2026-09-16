@@ -8,9 +8,9 @@ This does NOT touch _config.yml's `baseurl` (set that yourself to match) or
 front-matter `permalink:` values (those are already subpath-agnostic --
 Jekyll/GitHub Pages serve the whole tree under the subpath transparently).
 It only rewrites literal src="/assets/images/..." and internal
-href="/writing|music-reviews|photography|newsletter|one-minute-vlogs..."
-strings baked into post/page bodies, which bypass Jekyll's `relative_url`
-Liquid filter and so need the prefix baked in by hand.
+href="/writing|music-reviews|photography|newsletter..." strings baked into
+post/page bodies, which bypass Jekyll's `relative_url` Liquid filter and
+so need the prefix baked in by hand.
 
 Usage:
   python3 scripts/set_baseurl.py /vcent   # prefix for project-page hosting
@@ -23,13 +23,12 @@ import sys
 TARGET_GLOBS = [
     "_writing/*.html",
     "_music-reviews/*.html",
-    "_one-minute-vlogs/*.html",
     "index.html",
     "photography.html",
     "newsletter.html",
 ]
 
-SECTIONS = "writing|music-reviews|photography|newsletter|one-minute-vlogs"
+SECTIONS = "writing|music-reviews|photography|newsletter"
 
 
 def main():

@@ -191,11 +191,10 @@ def main():
         elif link.startswith("/music-reviews/"):
             collection = "_music-reviews"
             layout = "music-review"
-        elif link.startswith("/one-minute-vlogs/"):
-            collection = "_one-minute-vlogs"
-            layout = "vlog"
         else:
-            print(f"  SKIP unrecognized post link: {link}", file=sys.stderr)
+            # one-minute-vlogs (and anything else unrecognized) intentionally
+            # dropped -- the vlogs section was removed from the site.
+            print(f"  SKIP unrecognized/excluded post link: {link}", file=sys.stderr)
             continue
 
         date_prefix = dt.strftime("%Y-%m-%d") if dt else "1970-01-01"

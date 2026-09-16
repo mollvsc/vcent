@@ -22,8 +22,6 @@ collections:
     output: true
   music-reviews:
     output: true
-  one-minute-vlogs:
-    output: true
 
 defaults:
   - scope:
@@ -40,11 +38,6 @@ defaults:
       type: music-reviews
     values:
       layout: music-review
-  - scope:
-      path: ""
-      type: one-minute-vlogs
-    values:
-      layout: vlog
 
 plugins:
   - jekyll-feed
