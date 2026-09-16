@@ -3,12 +3,8 @@ tagline: Product, technology, heavy music & photography
 description: >-
   Personal site of Vince J — principal product manager writing about product
   management, reviewing heavy music, and sharing photography.
-# NOTE: until the vcent.in DNS cutover happens, this site is served from
-# https://mollvsc.github.io/vcent/ (a GitHub Pages project subpath), so
-# baseurl must stay "/vcent". Once DNS + CNAME are confirmed working,
-# switch this to "" and run: python3 scripts/set_baseurl.py ""
-url: "https://vcent.in"
-baseurl: "/vcent"
+url: "https://www.vcent.in"
+baseurl: ""
 author: Vince J
 email: me@vcent.in
 

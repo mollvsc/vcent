@@ -42,29 +42,28 @@ Push to GitHub, then in the repo's Settings → Pages, set the source to
 the `main` branch (GitHub Pages builds Jekyll sites automatically, no
 Actions workflow needed).
 
-## Custom domain (vcent.in)
+## Custom domain (www.vcent.in)
 
-DNS for vcent.in currently lives on Bigrock. Until that's switched over,
-this site is served from `https://mollvsc.github.io/vcent/` (a GitHub
-Pages *project* subpath), so `_config.yml` has `baseurl: "/vcent"` and
-all hardcoded root-absolute paths in migrated post/page bodies (image
-`src`, internal `href`) were prefixed with `/vcent` accordingly, via:
+DNS is hosted at Bigrock, pointed at GitHub Pages:
+
+- Apex domain (`vcent.in`): 4 `A` records to GitHub's IPs —
+  `185.199.108.153`, `185.199.109.153`, `185.199.110.153`,
+  `185.199.111.153`
+- `www.vcent.in`: a `CNAME` record to `mollvsc.github.io`
+
+`www.vcent.in` is canonical (matches the original Squarespace site's
+links); the bare `vcent.in` apex redirects to it. This is declared via
+the `CNAME` file in this repo and the custom domain setting in the
+repo's GitHub Pages settings.
+
+If the site is ever temporarily served from a GitHub Pages project
+subpath again (e.g. `https://mollvsc.github.io/vcent/`, before DNS is
+ready), hardcoded root-absolute paths baked into migrated post/page
+bodies (image `src`, internal `href` — these bypass Jekyll's
+`relative_url` filter) need the subpath prefixed onto them, and
+`_config.yml`'s `baseurl` needs to match:
 
 ```
-python3 scripts/set_baseurl.py /vcent
+python3 scripts/set_baseurl.py /vcent   # prefix for project-subpath hosting
+python3 scripts/set_baseurl.py ""       # strip prefix back out for domain-root hosting
 ```
-
-When ready to cut over to vcent.in:
-
-1. At Bigrock, point DNS at GitHub Pages:
-   - Apex domain (`vcent.in`): 4 `A` records to GitHub's IPs —
-     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`,
-     `185.199.111.153`
-   - `www.vcent.in`: a `CNAME` record to `mollvsc.github.io`
-2. In the repo's GitHub Pages settings, add `vcent.in` as the custom
-   domain and wait for DNS to verify (the `CNAME` file in this repo
-   already declares it).
-3. Switch `baseurl` back to `""` in `_config.yml`.
-4. Strip the `/vcent` prefix from content bodies: `python3
-   scripts/set_baseurl.py ""`
-5. Commit and push.
