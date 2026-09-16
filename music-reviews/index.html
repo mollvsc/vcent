@@ -1,0 +1,16 @@
+---
+layout: default
+title: Music reviews
+permalink: "/music-reviews/"
+---
+<h1>Music reviews</h1>
+<p class="section-intro">Reviews of heavy music, cross-posted from <a href="https://www.tempelores.com">Tempelores.com</a>, plus yearly best-of lists.</p>
+<ul class="post-list">
+  {% assign posts = site["music-reviews"] | sort: "date" | reverse %}
+  {% for post in posts %}
+  <li>
+    <a class="post-list-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
+  </li>
+  {% endfor %}
+</ul>

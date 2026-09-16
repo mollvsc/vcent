@@ -1,0 +1,56 @@
+title: Vince J
+tagline: Product, technology, heavy music & photography
+description: >-
+  Personal site of Vince J — principal product manager writing about product
+  management, reviewing heavy music, and sharing photography.
+url: "https://vcent.in"
+baseurl: ""
+author: Vince J
+email: me@vcent.in
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+collections:
+  writing:
+    output: true
+  music-reviews:
+    output: true
+  one-minute-vlogs:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: writing
+    values:
+      layout: writing-post
+  - scope:
+      path: ""
+      type: music-reviews
+    values:
+      layout: music-review
+  - scope:
+      path: ""
+      type: one-minute-vlogs
+    values:
+      layout: vlog
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - scripts
+  - "Squarespace-Wordpress-Export-09-06-2026 (2).xml"
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor

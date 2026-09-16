@@ -1,0 +1,16 @@
+---
+layout: default
+title: Writing
+permalink: "/writing/"
+---
+<h1>Writing</h1>
+<p class="section-intro">Notes and opinions on product management, plus the occasional book review.</p>
+<ul class="post-list">
+  {% assign posts = site.writing | sort: "date" | reverse %}
+  {% for post in posts %}
+  <li>
+    <a class="post-list-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
+  </li>
+  {% endfor %}
+</ul>
