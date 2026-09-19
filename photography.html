@@ -20,3 +20,46 @@ permalink: "/photography/"
   <img src="/assets/images/IMG_0085-8e3067a0.JPG" loading="lazy" alt="">
   <img src="/assets/images/83571679-sunset-hues-be705c8f.jpg" loading="lazy" alt="">
 </div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+(function () {
+  var gallery = document.querySelector('.gallery');
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+  var closeBtn = document.getElementById('lightbox-close');
+  var lastFocused = null;
+
+  function openLightbox(img) {
+    lastFocused = document.activeElement;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('is-open');
+    closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightboxImg.src = '';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  gallery.addEventListener('click', function (e) {
+    if (e.target.tagName === 'IMG') openLightbox(e.target);
+  });
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+  });
+})();
+</script>
