@@ -49,7 +49,7 @@ DNS is hosted at Bigrock, pointed at GitHub Pages:
 - Apex domain (`vcent.in`): 4 `A` records to GitHub's IPs —
   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`,
   `185.199.111.153`
-- `www.vcent.in`: a `CNAME` record to `mollvsc.github.io`
+- `www.vcent.in`: a `CNAME` record to `vincejyr.github.io`
 
 `www.vcent.in` is canonical (matches the original Squarespace site's
 links); the bare `vcent.in` apex redirects to it. This is declared via
@@ -57,7 +57,7 @@ the `CNAME` file in this repo and the custom domain setting in the
 repo's GitHub Pages settings.
 
 If the site is ever temporarily served from a GitHub Pages project
-subpath again (e.g. `https://mollvsc.github.io/vcent/`, before DNS is
+subpath again (e.g. `https://vincejyr.github.io/vcent/`, before DNS is
 ready), hardcoded root-absolute paths baked into migrated post/page
 bodies (image `src`, internal `href` — these bypass Jekyll's
 `relative_url` filter) need the subpath prefixed onto them, and
