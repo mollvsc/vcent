@@ -1,0 +1,16 @@
+---
+layout: page
+title: "#AOTY"
+permalink: "/music-reviews/tags/aoty/"
+---
+<p class="section-intro">Yearly best-of lists, tagged #AOTY.</p>
+<ul class="post-list">
+  {% assign posts = site["music-reviews"] | where_exp: "post", "post.tags contains 'AOTY'" | sort: "date" | reverse %}
+  {% for post in posts %}
+  <li>
+    <a class="post-list-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
+  </li>
+  {% endfor %}
+</ul>
+<p class="post-back"><a href="{{ '/music-reviews/' | relative_url }}">&larr; All music reviews</a></p>

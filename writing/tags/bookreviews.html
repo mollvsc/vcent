@@ -1,0 +1,16 @@
+---
+layout: page
+title: "#bookreviews"
+permalink: "/writing/tags/bookreviews/"
+---
+<p class="section-intro">Posts tagged #bookreviews.</p>
+<ul class="post-list">
+  {% assign posts = site.writing | where_exp: "post", "post.tags contains 'bookreviews'" | sort: "date" | reverse %}
+  {% for post in posts %}
+  <li>
+    <a class="post-list-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
+  </li>
+  {% endfor %}
+</ul>
+<p class="post-back"><a href="{{ '/writing/' | relative_url }}">&larr; All writing</a></p>

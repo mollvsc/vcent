@@ -96,6 +96,11 @@ main.wrap {
   color: var(--muted);
 }
 
+a.tag {
+  color: var(--muted);
+  text-decoration: underline;
+}
+
 .section-intro {
   color: var(--muted);
 }
