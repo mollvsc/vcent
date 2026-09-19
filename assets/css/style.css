@@ -209,6 +209,28 @@ figcaption {
   cursor: pointer;
 }
 
+.lightbox-prev,
+.lightbox-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  color: #fff;
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-prev {
+  left: 16px;
+}
+
+.lightbox-next {
+  right: 16px;
+}
+
 /* Footer */
 
 .site-footer {

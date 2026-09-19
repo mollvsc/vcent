@@ -23,21 +23,33 @@ permalink: "/photography/"
 
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+  <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous photo">&lsaquo;</button>
   <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-next" id="lightbox-next" aria-label="Next photo">&rsaquo;</button>
 </div>
 
 <script>
 (function () {
   var gallery = document.querySelector('.gallery');
+  var images = Array.prototype.slice.call(gallery.querySelectorAll('img'));
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
   var closeBtn = document.getElementById('lightbox-close');
+  var prevBtn = document.getElementById('lightbox-prev');
+  var nextBtn = document.getElementById('lightbox-next');
   var lastFocused = null;
+  var currentIndex = -1;
 
-  function openLightbox(img) {
-    lastFocused = document.activeElement;
+  function showImage(index) {
+    currentIndex = (index + images.length) % images.length;
+    var img = images[currentIndex];
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
+  }
+
+  function openLightbox(index) {
+    lastFocused = document.activeElement;
+    showImage(index);
     lightbox.classList.add('is-open');
     closeBtn.focus();
   }
@@ -49,7 +61,7 @@ permalink: "/photography/"
   }
 
   gallery.addEventListener('click', function (e) {
-    if (e.target.tagName === 'IMG') openLightbox(e.target);
+    if (e.target.tagName === 'IMG') openLightbox(images.indexOf(e.target));
   });
 
   lightbox.addEventListener('click', function (e) {
@@ -57,9 +69,14 @@ permalink: "/photography/"
   });
 
   closeBtn.addEventListener('click', closeLightbox);
+  prevBtn.addEventListener('click', function () { showImage(currentIndex - 1); });
+  nextBtn.addEventListener('click', function () { showImage(currentIndex + 1); });
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+    if (e.key === 'ArrowRight') showImage(currentIndex + 1);
   });
 })();
 </script>
